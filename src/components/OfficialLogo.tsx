@@ -5,7 +5,8 @@ interface OfficialLogoProps {
   className?: string;
 }
 
-const OfficialLogo = ({ className = "w-16 h-16" }: OfficialLogoProps) => {
+// THIS IS THE FIX - use "export" not "export default"
+export const OfficialLogo = ({ className = "w-16 h-16" }: OfficialLogoProps) => {
   return (
     <img 
       src={logo} 
@@ -15,4 +16,5 @@ const OfficialLogo = ({ className = "w-16 h-16" }: OfficialLogoProps) => {
   );
 };
 
+// Also keep default export for backward compatibility
 export default OfficialLogo;
