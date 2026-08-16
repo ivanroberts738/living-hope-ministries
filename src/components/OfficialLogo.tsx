@@ -1,11 +1,11 @@
 // src/components/OfficialLogo.tsx
+import React from 'react';
 import logo from './logo.png';
 
 interface OfficialLogoProps {
   className?: string;
 }
 
-// THIS IS THE FIX - use "export" not "export default"
 export const OfficialLogo = ({ className = "w-16 h-16" }: OfficialLogoProps) => {
   return (
     <img 
@@ -16,5 +16,4 @@ export const OfficialLogo = ({ className = "w-16 h-16" }: OfficialLogoProps) => 
   );
 };
 
-// Also keep default export for backward compatibility
 export default OfficialLogo;
