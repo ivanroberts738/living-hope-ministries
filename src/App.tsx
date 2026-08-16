@@ -1,3 +1,4 @@
+// src/App.tsx
 import React, { useState, useEffect } from 'react';
 import { Activity, AdminUser } from './types';
 import { Navbar } from './components/Navbar';
@@ -13,39 +14,32 @@ import { ContactPage } from './pages/ContactPage';
 import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { ActivityDetailModal } from './components/ActivityDetailModal';
+import BoardOfGovernorsPage from './pages/BoardOfGovernorsPage';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('all');
-  const [adminUser, setAdminUser] = useState<AdminUser | null>(() => {
-    try {
-      const saved = localStorage.getItem('buhugu_admin_user');
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  });
+  const [adminUser, setAdminUser] = useState<AdminUser | null>(null); // No localStorage
 
   const handleAdminLoginSuccess = (user: AdminUser) => {
     setAdminUser(user);
-    try {
-      localStorage.setItem('buhugu_admin_user', JSON.stringify(user));
-    } catch (e) {
-      console.error('Failed to save session to localStorage', e);
-    }
     setActiveTab('admin');
   };
 
   const handleAdminLogout = () => {
     setAdminUser(null);
-    try {
-      localStorage.removeItem('buhugu_admin_user');
-    } catch (e) {
-      console.error('Failed to clear session', e);
-    }
     setActiveTab('home');
   };
+
+  // Optional: Clear admin session on page close
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // Clean up on page close
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white">
@@ -91,6 +85,8 @@ export default function App() {
         )}
 
         {activeTab === 'contact' && <ContactPage />}
+
+        {activeTab === 'board-of-governors' && <BoardOfGovernorsPage />}
 
         {activeTab === 'admin-login' && (
           <AdminLoginPage
