@@ -1,103 +1,87 @@
+// src/pages/AdminLoginPage.tsx
 import React, { useState } from 'react';
-import { AdminUser } from '../types';
-import { loginAdmin } from '../lib/api';
-import { OfficialLogo } from '../components/OfficialLogo';
-import { Lock, Mail, KeyRound, ShieldAlert, ArrowLeft } from 'lucide-react';
+import { Shield, Mail, Lock, ArrowLeft, AlertCircle } from 'lucide-react';
+import { adminLogin } from '../lib/api';
 
 interface AdminLoginPageProps {
-  onLoginSuccess: (user: AdminUser) => void;
+  onLoginSuccess: (user: any) => void;
   onBackToWebsite: () => void;
 }
 
-export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
-  onLoginSuccess,
-  onBackToWebsite
-}) => {
+const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onLoginSuccess, onBackToWebsite }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
+    setError('');
 
     try {
-      const res = await loginAdmin(email, password);
-      onLoginSuccess(res.user);
+      const user = await adminLogin(email, password);
+      onLoginSuccess(user);
     } catch (err: any) {
-      setError(err.message || 'Invalid administrator email or password');
+      setError(err.message || 'Invalid email or password. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-[80vh] flex flex-col justify-center items-center px-4 py-12">
-      <div className="w-full max-w-md space-y-6">
-        {/* Back link */}
-        <button
-          onClick={onBackToWebsite}
-          className="text-xs font-bold text-slate-500 hover:text-blue-700 flex items-center gap-1 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Return to Public Website</span>
-        </button>
-
-        {/* Login Box */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8 space-y-6">
-          <div className="text-center space-y-2">
-            <OfficialLogo variant="icon" size={80} className="mx-auto" />
-            <h1 className="text-xl font-bold font-serif text-slate-900">
-              BUHUGU LIVING HOPE MINISTRIES
-            </h1>
-            <p className="text-xs text-red-600 font-extrabold uppercase tracking-wider">
-              Authorized Administrator Portal
-            </p>
-            <p className="text-xs text-slate-500">
-              Sironko–Bulambuli, Uganda • Everyday Activity Management
-            </p>
+    <div className="min-h-[80vh] flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-blue-900" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">Admin Login</h2>
+            <p className="text-gray-600 text-sm mt-1">Living Hope Ministries · Sironko, Uganda</p>
           </div>
 
+          {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-xs text-red-700 font-medium flex items-center gap-2">
-              <ShieldAlert className="w-4 h-4 text-red-600 shrink-0" />
-              <span>{error}</span>
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
+              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700">{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-                Admin Email Address
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email Address
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="email"
                   required
-                  placeholder="admin1@buhugu.org"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="admin@livinghopeministries.org"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <div className="relative">
-                <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="password"
                   required
-                  placeholder="••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your password"
                 />
               </div>
             </div>
@@ -105,28 +89,31 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-900 hover:bg-blue-950 text-white font-bold py-3.5 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 text-sm"
+              className="w-full py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <>
-                  <Lock className="w-4 h-4" />
-                  <span>Log In to Admin Dashboard</span>
-                </>
-              )}
+              {loading ? 'Logging in...' : 'Login to Admin'}
             </button>
           </form>
 
-          {/* Initial Demo Credentials Reminder */}
-          <div className="bg-blue-50/80 border border-blue-200/80 rounded-xl p-3 text-[11px] text-blue-900 space-y-1">
-            <strong className="block font-bold">Default Authorized Admin Accounts:</strong>
-            <div>Primary Admin: <code className="bg-blue-100 px-1 rounded">admin1@buhugu.org</code></div>
-            <div>Field Admin: <code className="bg-blue-100 px-1 rounded">admin2@buhugu.org</code></div>
-            <div>Default Password: <code className="bg-blue-100 px-1 rounded">HopeForAll2026!</code></div>
+          {/* Back to Website */}
+          <button
+            onClick={onBackToWebsite}
+            className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-600 hover:text-blue-900 transition w-full"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Website
+          </button>
+
+          {/* Footer */}
+          <div className="mt-6 pt-6 border-t border-gray-100 text-center">
+            <p className="text-xs text-gray-500">
+              Protected area for authorized administrators only.
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default AdminLoginPage;
