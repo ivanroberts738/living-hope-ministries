@@ -1,0 +1,188 @@
+import { Activity, GalleryPhoto, Programme, WebsiteContent } from '../types';
+
+export const INITIAL_PROGRAMMES: Programme[] = [
+  {
+    id: 'prog-1',
+    slug: 'women-empowerment',
+    name: 'Women Empowerment',
+    description: 'Supporting women with opportunities, practical skills, vocational training, and economic self-reliance initiatives in Sironko–Bulambuli.',
+    objectives: [
+      'Provide tailoring, textile, and craft skills training for vulnerable mothers.',
+      'Establish women self-help Village Savings and Loan Associations (VSLA).',
+      'Promote maternal health awareness, dignity kits, and rights advocacy.'
+    ],
+    iconName: 'HeartHandshake',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'prog-2',
+    slug: 'children-empowerment',
+    name: 'Children Empowerment',
+    description: 'Supporting children wellbeing, educational protection, nutritional care, and holistic child protection.',
+    objectives: [
+      'Provide scholastic materials, school uniforms, and tuition assistance.',
+      'Conduct child rights, safety, and hygiene sensitization in rural villages.',
+      'Provide nutritional support and health checks for vulnerable pupils.'
+    ],
+    iconName: 'Smile',
+    imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'prog-3',
+    slug: 'education',
+    name: 'Education Support',
+    description: 'Supporting educational opportunities, literacy programs, and conducive study environments for rural learners.',
+    objectives: [
+      'Sponsor vulnerable and orphaned learners in primary and secondary schools.',
+      'Distribute textbooks, pens, and exercise books to primary schools.',
+      'Partner with teachers to foster inclusive and supportive learning spaces.'
+    ],
+    iconName: 'BookOpen',
+    imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'prog-4',
+    slug: 'community-development',
+    name: 'Community Development',
+    description: 'Working directly with communities in Sironko–Bulambuli to identify social challenges and develop sustainable solutions.',
+    objectives: [
+      'Rehabilitate rural clean water springs and community boreholes.',
+      'Conduct village sanitation, hygiene, and environmental conservation sessions.',
+      'Strengthen local community leadership and stakeholder collaboration.'
+    ],
+    iconName: 'Users',
+    imageUrl: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'prog-5',
+    slug: 'livelihood-empowerment',
+    name: 'Livelihood Empowerment',
+    description: 'Supporting sustainable livelihood opportunities, agricultural training, and household micro-enterprises.',
+    objectives: [
+      'Distribute high-yield agricultural seeds and tools to rural farming families.',
+      'Train smallholder farmers in climate-resilient agricultural methods.',
+      'Support youth and women in starting sustainable income ventures.'
+    ],
+    iconName: 'TrendingUp',
+    imageUrl: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'prog-6',
+    slug: 'community-outreach',
+    name: 'Community Outreach',
+    description: 'Reaching vulnerable people, elderly individuals, and impoverished families through practical humanitarian outreach.',
+    objectives: [
+      'Distribute emergency food packages, soap, and bedding to vulnerable households.',
+      'Organize community health screening and wellness outreach camps.',
+      'Offer psychological support, hope, and community care visits.'
+    ],
+    iconName: 'HandHeart',
+    imageUrl: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=1200'
+  }
+];
+
+export const INITIAL_ACTIVITIES: Activity[] = [];
+
+export const INITIAL_GALLERY: GalleryPhoto[] = [
+  {
+    id: 'gal-1',
+    title: 'Women Tailoring Workshop',
+    category: 'Women Empowerment',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Trainees producing quality garments in Sironko',
+    createdAt: '2026-08-04T10:30:00Z'
+  },
+  {
+    id: 'gal-2',
+    title: 'Child Education & Learning Support',
+    category: 'Education',
+    imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Pupils holding new exercise books in Bulambuli',
+    createdAt: '2026-07-22T14:15:00Z'
+  },
+  {
+    id: 'gal-3',
+    title: 'Clean Water Spring Protection',
+    category: 'Community Development',
+    imageUrl: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Clean safe drinking water for local families',
+    createdAt: '2026-07-10T09:00:00Z'
+  },
+  {
+    id: 'gal-4',
+    title: 'Smallholder Farmers Training',
+    category: 'Livelihood',
+    imageUrl: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Farmers receiving vegetable seed distribution',
+    createdAt: '2026-06-28T11:45:00Z'
+  },
+  {
+    id: 'gal-5',
+    title: 'Elderly Outreach & Care',
+    category: 'Outreach',
+    imageUrl: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Humanitarian assistance and health screening',
+    createdAt: '2026-06-12T08:30:00Z'
+  },
+  {
+    id: 'gal-6',
+    title: 'Youth Mentorship & Leadership',
+    category: 'Children Empowerment',
+    imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200',
+    caption: 'Community youth leadership and life skills session',
+    createdAt: '2026-05-18T13:00:00Z'
+  }
+];
+
+export const INITIAL_WEBSITE_CONTENT: Record<string, WebsiteContent> = {
+  about: {
+    section: 'about',
+    title: 'About Buhugu Living Hope Ministries',
+    content: {
+      tagline: 'HOPE FOR ALL HUMAN KIND',
+      location: 'Sironko–Bulambuli, Uganda',
+      whoWeAre: 'Buhugu Living Hope Ministries is a community-based non-governmental organisation operating in Sironko–Bulambuli, Eastern Uganda. We are committed to uplifting women, children, and vulnerable community members through sustainable empowerment, education, health outreach, and livelihood programs.',
+      ourStory: '[Insert official organisation history here - Founded in Sironko-Bulambuli to address community challenges, poverty, child vulnerability, and economic hardship through grassroots partnership and holistic care.]',
+      mission: '[Insert official mission statement - Working with communities to create hope, opportunity and a better future for women, children and vulnerable people in Sironko–Bulambuli and beyond.]',
+      vision: '[Insert official vision statement - A resilient, empowered and dignified community where every woman, child and family thrives with hope and self-reliance.]',
+      coreValues: [
+        { title: 'Faith & Hope', desc: 'Bringing compassionate, holistic hope to every human kind.' },
+        { title: 'Integrity & Transparency', desc: 'Upholding accountability to communities, partners, and supporters.' },
+        { title: 'Empowerment', desc: 'Fostering self-reliance and dignity through sustainable skills.' },
+        { title: 'Community Inclusion', desc: 'Serving all vulnerable individuals regardless of background.' }
+      ],
+      targetCommunities: 'Women, orphaned and vulnerable children, low-income farming families, widows, and elderly residents across Sironko and Bulambuli districts in Uganda.',
+      ourApproach: 'We work directly at the grass-roots level, consulting community leaders and families to design practical interventions that foster long-term self-sufficiency rather than temporary dependency.'
+    }
+  },
+  contact: {
+    section: 'contact',
+    title: 'Contact Information',
+    content: {
+      phonePrimary: '+256 772 000 000',
+      phoneSecondary: '+256 700 000 000',
+      email: 'hopeministriesbuhuguliving@gmail.com',
+      locationName: 'Sironko–Bulambuli, Eastern Region, Uganda',
+      postalAddress: 'P.O. Box Sironko–Bulambuli, Uganda',
+      workingHours: 'Monday – Friday: 8:00 AM – 5:00 PM EAT',
+      socialFacebook: 'https://facebook.com/buhugulivinghope',
+      socialWhatsApp: '+256772000000',
+      socialTwitter: 'https://twitter.com/buhugulivinghope',
+      socialYouTube: 'https://youtube.com/buhugulivinghope'
+    }
+  },
+  getInvolved: {
+    section: 'getInvolved',
+    title: 'Support & Get Involved',
+    content: {
+      volunteerInfo: 'We welcome passionate community volunteers, educators, healthcare professionals, and youth leaders to join our field activities in Sironko–Bulambuli.',
+      partnerInfo: 'We collaborate with national and international NGOs, churches, local government authorities, development agencies, and corporate sponsors to expand community impact.',
+      donationNotice: 'Your support enables us to provide tailoring equipment for women, exercise books for primary pupils, clean water springs, and medical care for vulnerable families.',
+      bankAccountName: 'BUHUGU LIVING HOPE MINISTRIES',
+      bankName: 'Stanbic Bank Uganda / Centenary Bank Uganda',
+      accountNumber: '[Insert official bank account number]',
+      mobileMoneyMTN: '+256 772 000 000 (Registered Name: Buhugu Living Hope Ministries)',
+      mobileMoneyAirtel: '+256 700 000 000 (Registered Name: Buhugu Living Hope Ministries)'
+    }
+  }
+};

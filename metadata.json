@@ -1,0 +1,6 @@
+{
+  "name": "Buhugu Living Hope Ministries",
+  "description": "Official website and activity management portal for Buhugu Living Hope Ministries in Sironko–Bulambuli, Uganda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
